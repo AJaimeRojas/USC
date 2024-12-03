@@ -1,0 +1,16 @@
+[20-Oct-2023 11:51:13 UTC] PHP Warning:  Error while sending QUERY packet. PID=8254 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[20-Oct-2023 11:51:13 UTC] PHP Warning:  Error while sending QUERY packet. PID=8258 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[20-Oct-2023 11:52:52 UTC] PHP Warning:  Error while sending QUERY packet. PID=16895 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[20-Oct-2023 11:52:52 UTC] PHP Warning:  Error while sending QUERY packet. PID=16910 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[01-Nov-2023 11:24:04 UTC] PHP Warning:  Error while sending QUERY packet. PID=9470 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[01-Nov-2023 11:26:02 UTC] PHP Warning:  Error while sending QUERY packet. PID=16921 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[11-Nov-2023 13:00:37 UTC] PHP Warning:  Error while sending QUERY packet. PID=71992 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[11-Nov-2023 13:01:59 UTC] PHP Warning:  Error while sending QUERY packet. PID=80436 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[18-Dec-2023 12:24:35 UTC] PHP Warning:  Error while sending QUERY packet. PID=144841 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[18-Dec-2023 12:26:50 UTC] PHP Warning:  Error while sending QUERY packet. PID=159588 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[25-Jan-2024 12:22:25 UTC] PHP Warning:  Error while sending QUERY packet. PID=5685 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[25-Jan-2024 12:24:04 UTC] PHP Warning:  Error while sending QUERY packet. PID=20687 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[01-Mar-2024 13:13:43 UTC] PHP Warning:  Error while sending QUERY packet. PID=195646 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[19-May-2024 11:21:41 UTC] PHP Warning:  Error while sending QUERY packet. PID=40934 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[19-Jun-2024 11:53:07 UTC] PHP Warning:  Error while sending QUERY packet. PID=71161 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
+[20-Jun-2024 12:14:41 UTC] PHP Warning:  Error while sending QUERY packet. PID=59456 in /home/ultraschall/public_html/blog/wp-includes/wp-db.php on line 2007
