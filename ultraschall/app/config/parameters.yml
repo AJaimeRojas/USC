@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: ultraschall_staff
+    database_user: ultraschall_staff
+    database_password: $6x7yE0JKG]t6@DQ
+    database_host_client: 190.25.158.198
+    database_port_client: 1433
+    database_name_client: JROJAS
+    database_user_client: palestra
+    database_password_client: 12345*palestra
+    mailer_transport: mail
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    secret: 80efccf53bfe770a978392179642e3d06dfdd6ba

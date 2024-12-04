@@ -1,0 +1,70 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        shop:
+            pattern: /(shop|user)/(.*)$
+            context: staff
+            form_login:
+                provider: fos_userbundle
+                login_path: shop_security_login
+                check_path: shop_security_check
+                default_target_path: shop_my_account
+                csrf_provider: security.csrf.token_manager
+            logout:
+                path: shop_security_logout
+            anonymous: false
+            oauth:
+                resource_owners:
+                    facebook:      oauth_facebook_login
+                    google:        oauth_google_login
+                login_path:        shop_security_login # /social-login
+                check_path:        shop_security_check
+                use_forward:       false
+                failure_path:      shop_security_login # /social-login
+                default_target_path: shop_my_account
+                oauth_user_provider:
+                    service: staff_user_provider
+
+        main:
+            pattern: ^/
+            context: staff
+            form_login:
+                provider: fos_userbundle
+                login_path: zerobundle_admin_security_login
+                check_path: zerobundle_admin_security_check
+                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+            logout:
+                path: zerobundle_admin_security_logout
+            anonymous: true
+
+    access_control:
+        - { path: ^/ingresar$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin-staff/, role: ROLE_ADMIN }
+        - { path: ^/api/, role: ROLE_ADMIN }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login/check/, role: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/shop/, roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/user/, roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/logout/, roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER] }
+
+        - { path: ^/social-connect/, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/social-connect/service/, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/social-connect/registration/, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/social-login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/check-facebook$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/check-google$, role: IS_AUTHENTICATED_ANONYMOUSLY }

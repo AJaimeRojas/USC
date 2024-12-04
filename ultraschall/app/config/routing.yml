@@ -1,0 +1,28 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /social-connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix:   /social-connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /social-login
+
+oauth_facebook_login:
+    path: /shop/check-facebook
+
+oauth_google_login:
+    path: /shop/check-google
+
+shop:
+    resource: "@ShopBundle/Resources/config/routing.yml"
+
+admin:
+    resource: "@CoreZeroBundle/Resources/config/routing.yml"
+
+web:
+    resource: "@WebBundle/Controller/"
+    type:     annotation
+    prefix:   /

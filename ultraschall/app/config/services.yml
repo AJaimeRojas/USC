@@ -1,0 +1,49 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+    staff_user_provider.class: ShopBundle\Security\FOSUBUserProvider
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    splitalt.twig_extension:
+        class: AdminBundle\Twig\SplitAltExtension
+        arguments: [@doctrine]
+        tags:
+            - { name: twig.extension }
+
+    entitymediafile.twig_extension:
+            class: AdminBundle\Twig\EntityMediaFileExtension
+            arguments: [@doctrine,@service_container]
+            tags:
+                - { name: twig.extension }
+
+#    imagenproductos.twig_extension:
+#        class: AdminBundle\Twig\ImagenProductoExtension
+#        arguments: [@doctrine,@service_container]
+#        tags:
+#            - { name: twig.extension }
+#
+#    catalogoproductos.twig_extension:
+#        class: AdminBundle\Twig\CatalogoProductoExtension
+#        arguments: [@doctrine,@service_container]
+#        tags:
+#            - { name: twig.extension }
+#
+#    galeriaproductos.twig_extension:
+#        class: AdminBundle\Twig\GaleriaProductoExtension
+#        arguments: [@doctrine,@service_container]
+#        tags:
+#            - { name: twig.extension }
+
+    staff.custom.mailer:
+        class: ShopBundle\Services\AccountMailer
+        arguments: [@mailer,@router,@templating,{confirmation.template:%fos_user.registration.confirmation.template%,resetting.template:%fos_user.resetting.email.template%,from_email: {confirmation: %fos_user.registration.confirmation.from_email%, resetting: %fos_user.resetting.email.from_email%}},@doctrine.orm.entity_manager]
+
+
+    staff_user_provider:
+        class: "%staff_user_provider.class%"
+        #this is the place where the properties are passed to the UserProvider - see config.yml
+        arguments: [@fos_user.user_manager,{facebook: facebookid, google: googleid},@service_container]

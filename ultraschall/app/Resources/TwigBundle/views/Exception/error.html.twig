@@ -1,0 +1,23 @@
+{% extends 'WebBundle:_common:_base.html.twig' %}
+
+{% block content %}
+    <section class="error">
+        <div class="error__container">
+            <div class="error__content">
+                <div class="error__image"><img src="{{ asset(info.mensajeerrorimagen) }}" alt=""/></div>
+                <div class="error__title">
+                    <h3>{{ info.mensajeerrortitulo }}</h3>
+                </div>
+                <div class="error__text">
+                    <p>{{ info.mensajeerrortexto }}</p>
+                </div>
+                <div class="error__btn">
+                    <a class="btn__general btn__general--purple" href="{{ path('home') }}">
+                        <div class="btn__general__text btn__general__text1"><span class="span__txt__black">{{ info.mensajeerrorbotontitulo }}</span></div>
+                        <div class="btn__general__text btn__general__text2"><span class="span__txt__black">{{ info.mensajeerrorbotontitulo }}</span></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,132 @@
+parameters:
+    admin_zero:
+        developer: Digital
+        api_key_maps: AIzaSyDJq-y2QxyZn_chMbmzNt0AHynzwQmeGP4
+        locales: "%jms_i18n_routing.locales%"
+        sidebar:
+            -
+                model: Home
+                label: Home
+                ico: info-circle
+            -
+                model: Nosotros
+                label: Nosotros
+                ico: info-circle
+            -
+                type: tree
+                label: Categorías
+                ico: info-circle
+                interno:
+                    AreaParametro:
+                        label: Parametros
+                        ico: dot-circle-o
+                    Area:
+                        label: Listado
+                        ico: dot-circle-o
+            -
+                model: GrupoProducto
+                label: SubCategoría
+                ico: info-circle
+            -
+                type: tree
+                label: Marcas
+                ico: info-circle
+                interno:
+                    MarcaParametro:
+                        label: Parametros
+                        ico: dot-circle-o
+                    Marca:
+                        label: Listado
+                        ico: dot-circle-o
+            -
+                model: Procedencia
+                label: Procedencia
+                ico: info-circle
+            -
+                type: tree
+                label: Productos
+                ico: info-circle
+                interno:
+                    ProductoParametro:
+                        label: Parametros
+                        ico: dot-circle-o
+                    Producto:
+                        label: Listado
+                        ico: dot-circle-o
+            -
+                type: tree
+                label: Cotizaciones
+                ico: info-circle
+                interno:
+                    CotizacionInfo:
+                        label: Info
+                        ico: dot-circle-o
+                    Cotizacion:
+                        label: Cotizaciones
+                        ico: dot-circle-o
+            -
+                type: tree
+                label: Formularios
+                ico: info-circle
+                interno:
+                    FormContacto:
+                        label: Contacto
+                        ico: dot-circle-o
+                    FormInformacion:
+                        label: Información
+                        ico: dot-circle-o
+                    FormCapacitacion:
+                        label: Capacitación
+                        ico: dot-circle-o
+                    FormSolicita:
+                        label: Servicio técnico
+                        ico: dot-circle-o
+            -
+                type: tree
+                label: Capacitaciones
+                ico: info-circle
+                interno:
+                    Categoria:
+                        label: Categorias
+                        ico: dot-circle-o
+                    Capacitacion:
+                        label: Capacitaciones
+                        ico: dot-circle-o
+                    # Capacitaciones:
+                    #     label: Vista de capacitaciones
+            -
+                type: tree
+                label: Proyectos integrales
+                ico: info-circle
+                interno:
+                    Departamento:
+                        label: Departamentos
+                        ico: dot-circle-o
+                    ProyectosIntegrales:
+                        label: Proyectos
+                        ico: dot-circle-o
+            -
+                model: Serviciotecnico
+                label: Servicio técnico
+                ico: info-circle
+            -
+                model: Politicas
+                label: Politicas y privacidad
+                ico: info-circle
+            -
+                type: tree
+                label: Ajustes
+                ico: wrench
+                interno:
+                    Info:
+                        label: Generales
+                    TipoDocumento:
+                        label: Tipo de documento
+                    ZeroTranslate:
+                        label: Diccionario
+                    ZeroRedirect:
+                        label: Redireccionamientos
+                        ico: link
+                    ZeroSeo:
+                        label: SEO Metatags
+                        ico: bullhorn

@@ -1,0 +1,257 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: admin.yml }
+    - { resource: "@ShopBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: es
+
+framework:
+    #esi:             ~
+    translator:      ~
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+                # if using pdo_sqlite as your database driver:
+                #   1. add the path in parameters.yml
+                #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+                #   2. Uncomment database_path in parameters.yml.dist
+                #   3. Uncomment next line:
+                #     path:     "%database_path%"
+            client:
+                driver:   pdo_sqlsrv
+                host:     "%database_host_client%"
+                port:     "%database_port_client%"
+                dbname:   "%database_name_client%"
+                user:     "%database_user_client%"
+                password: "%database_password_client%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        default_entity_manager: default
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                auto_mapping: true
+                connection: default
+                mappings:
+                    AdminBundle: ~
+                    WebBundle: ~
+                    translatable:
+                        type: annotation
+                        alias: Gedmo
+                        prefix: Gedmo\Translatable\Entity
+                        # make sure vendor library location is correct
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+
+                dql:
+                    datetime_functions:
+                        convert_tz: DoctrineExtensions\Query\Mysql\ConvertTz
+                        date: DoctrineExtensions\Query\Mysql\Date
+                        date_format: DoctrineExtensions\Query\Mysql\DateFormat
+                        dateadd: DoctrineExtensions\Query\Mysql\DateAdd
+                        datesub: DoctrineExtensions\Query\Mysql\DateSub
+                        datediff: DoctrineExtensions\Query\Mysql\DateDiff
+                        day: DoctrineExtensions\Query\Mysql\Day
+                        dayname: DoctrineExtensions\Query\Mysql\DayName
+                        dayofweek: DoctrineExtensions\Query\Mysql\DayOfWeek
+                        dayofyear: DoctrineExtensions\Query\Mysql\DayOfYear
+                        div: DoctrineExtensions\Query\Mysql\Div
+                        from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime
+                        hour: DoctrineExtensions\Query\Mysql\Hour
+                        last_day: DoctrineExtensions\Query\Mysql\LastDay
+                        minute: DoctrineExtensions\Query\Mysql\Minute
+                        now: DoctrineExtensions\Query\Mysql\Now
+                        month: DoctrineExtensions\Query\Mysql\Month
+                        monthname: DoctrineExtensions\Query\Mysql\MonthName
+                        second: DoctrineExtensions\Query\Mysql\Second
+                        strtodate: DoctrineExtensions\Query\Mysql\StrToDate
+                        time: DoctrineExtensions\Query\Mysql\Time
+                        timediff: DoctrineExtensions\Query\Mysql\TimeDiff
+                        timestampadd: DoctrineExtensions\Query\Mysql\TimestampAdd
+                        timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
+                        timetosec: DoctrineExtensions\Query\Mysql\TimeToSec
+                        week: DoctrineExtensions\Query\Mysql\Week
+                        weekday: DoctrineExtensions\Query\Mysql\WeekDay
+                        year: DoctrineExtensions\Query\Mysql\Year
+                        yearweek: DoctrineExtensions\Query\Mysql\YearWeek
+                        unix_timestamp: DoctrineExtensions\Query\Mysql\UnixTimestamp
+                        utc_timestamp: DoctrineExtensions\Query\Mysql\UtcTimestamp
+                        extract: DoctrineExtensions\Query\Mysql\Extract
+
+                    numeric_functions:
+                        acos: DoctrineExtensions\Query\Mysql\Acos
+                        asin: DoctrineExtensions\Query\Mysql\Asin
+                        atan2: DoctrineExtensions\Query\Mysql\Atan2
+                        atan: DoctrineExtensions\Query\Mysql\Atan
+                        bit_count: DoctrineExtensions\Query\Mysql\BitCount
+                        bit_xor: DoctrineExtensions\Query\Mysql\BitXor
+                        ceil: DoctrineExtensions\Query\Mysql\Ceil
+                        cos: DoctrineExtensions\Query\Mysql\Cos
+                        cot: DoctrineExtensions\Query\Mysql\Cot
+                        degrees: DoctrineExtensions\Query\Mysql\Degrees
+                        floor: DoctrineExtensions\Query\Mysql\Floor
+                        log10: DoctrineExtensions\Query\Mysql\Log10
+                        pi: DoctrineExtensions\Query\Mysql\Pi
+                        power: DoctrineExtensions\Query\Mysql\Power
+                        quarter: DoctrineExtensions\Query\Mysql\Quarter
+                        radians: DoctrineExtensions\Query\Mysql\Radians
+                        rand: DoctrineExtensions\Query\Mysql\Rand
+                        round: DoctrineExtensions\Query\Mysql\Round
+                        stddev: DoctrineExtensions\Query\Mysql\StdDev
+                        sin: DoctrineExtensions\Query\Mysql\Sin
+                        std: DoctrineExtensions\Query\Mysql\Std
+                        tan: DoctrineExtensions\Query\Mysql\Tan
+                        variance: DoctrineExtensions\Query\Mysql\Variance
+
+                    string_functions:
+                        aes_decrypt: DoctrineExtensions\Query\Mysql\AesDecrypt
+                        aes_encrypt: DoctrineExtensions\Query\Mysql\AesEncrypt
+                        any_value: DoctrineExtensions\Query\Mysql\AnyValue
+                        ascii: DoctrineExtensions\Query\Mysql\Ascii
+                        binary: DoctrineExtensions\Query\Mysql\Binary
+                        char_length: DoctrineExtensions\Query\Mysql\CharLength
+                        collate: DoctrineExtensions\Query\Mysql\Collate
+                        concat_ws: DoctrineExtensions\Query\Mysql\ConcatWs
+                        countif: DoctrineExtensions\Query\Mysql\CountIf
+                        crc32: DoctrineExtensions\Query\Mysql\Crc32
+                        degrees: DoctrineExtensions\Query\Mysql\Degrees
+                        field: DoctrineExtensions\Query\Mysql\Field
+                        find_in_set: DoctrineExtensions\Query\Mysql\FindInSet
+                        greatest: DoctrineExtensions\Query\Mysql\Greatest
+                        group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
+                        ifelse: DoctrineExtensions\Query\Mysql\IfElse
+                        ifnull: DoctrineExtensions\Query\Mysql\IfNull
+                        least: DoctrineExtensions\Query\Mysql\Least
+                        lpad: DoctrineExtensions\Query\Mysql\Lpad
+                        match: DoctrineExtensions\Query\Mysql\MatchAgainst
+                        md5: DoctrineExtensions\Query\Mysql\Md5
+                        nullif: DoctrineExtensions\Query\Mysql\NullIf
+                        radians: DoctrineExtensions\Query\Mysql\Radians
+                        regexp: DoctrineExtensions\Query\Mysql\Regexp
+                        replace: DoctrineExtensions\Query\Mysql\Replace
+                        rpad: DoctrineExtensions\Query\Mysql\Rpad
+                        sha1: DoctrineExtensions\Query\Mysql\Sha1
+                        sha2: DoctrineExtensions\Query\Mysql\Sha2
+                        soundex: DoctrineExtensions\Query\Mysql\Soundex
+                        str_to_date: DoctrineExtensions\Query\Mysql\StrToDate
+                        substring_index: DoctrineExtensions\Query\Mysql\SubstringIndex
+                        uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
+                        hex: DoctrineExtensions\Query\Mysql\Hex
+                        unhex: DoctrineExtensions\Query\Mysql\Unhex
+            client:
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                connection: client
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AdminBundle\Entity\Usuarios
+    service:
+        mailer: staff.custom.mailer
+    from_email:
+        address: noreply@ajaimerojas.com
+        sender_name: AJAIME
+    resetting:
+        email:
+            from_email:
+                address: noreply@ajaimerojas.com
+                sender_name: AJAIME
+
+
+jms_i18n_routing:
+    default_locale: es
+    locales: [es, en]
+    strategy: prefix_except_default
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+knp_paginator:
+    template:
+        pagination: WebBundle:Pagination:sliding.html.twig
+
+zenstruck_redirect:
+    redirect_class: Core\ZeroBundle\Entity\ZeroRedirect
+
+circle_rest_client:
+    curl:
+        defaults:
+            CURLOPT_HTTPHEADER:     [ 'Content-Type: application/json' ]
+            CURLOPT_FOLLOWLOCATION: true
+
+hwi_oauth:
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_names: [shop]
+    connect:
+        account_connector: staff_user_provider
+    fosub:
+        # try 30 times to check if a username is available (foo, foo1, foo2 etc)
+        username_iterations: 30
+
+        # mapping between resource owners (see below) and properties
+        properties:
+            google: googleid
+            facebook: facebookid
+    # connect:
+    #     account_connector: app.provider.oauth
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           2036389569936063
+            client_secret:       12a314c68d220a9cf7cdd35e2d5b940a
+            scope:               "email, public_profile"
+            options:
+                display: popup
+                #auth_type: rerequest
+                csrf: true
+        google:
+            type:               google
+            client_id:          921581480325-kbdf4tfhqrr726uqbvabcifl0bctkqh4.apps.googleusercontent.com
+            client_secret:      m52gjZEFdxs07cPe97y9d_x_
+            scope:              "email profile"
+            options:
+                csrf: true
