@@ -1,0 +1,22 @@
+{
+  "name": "staffdigital-developers",
+  "version": "0.0.1",
+  "description": "Base: Jinja, Stylus",
+  "author": "Frontend:StaffDigital",
+  "license": "MIT",
+  "devDependencies": {
+    "amdefine": "^1.0.0",
+    "find-port": "^1.0.1",
+    "gulp": "^3.8.11",
+    "autoprefixer": "^7.1.2",
+    "postcss-assets": "^4.2.0",
+    "gulp-concat": "^2.6.0",
+    "css-mqpacker": "^6.0.1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-shell": "^0.4.2",
+    "gulp-stylus": "^2.0.6",
+    "gulp-sass": "^2.3.2",
+    "gulp-postcss": "^7.0.0",
+    "nib": "^1.1.0"
+  }
+}
